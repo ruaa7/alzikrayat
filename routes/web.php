@@ -18,18 +18,23 @@ $router->add('GET', '/', ['HomeController', 'index']);
 //Auth 
 $router->add('GET',  '/register', ['AuthController', 'showRegister']);
 $router->add('POST', '/register', ['AuthController', 'register']);
-$router->add('GET',  '/login',    ['AuthController', 'showLogin']);
-$router->add('POST', '/login',    ['AuthController', 'login']);
-$router->add('GET',  '/logout',   ['AuthController', 'logout']);
+$router->add('GET',  '/login',['AuthController', 'showLogin']);
+$router->add('POST', '/login', ['AuthController', 'login']);
+$router->add('GET',  '/logout',['AuthController', 'logout']);
 
 //Photos 
-$router->add('GET',  '/photos',              ['PhotoController', 'index']);
-$router->add('GET',  '/photo/create',        ['PhotoController', 'create']);
-$router->add('POST', '/photo/store',         ['PhotoController', 'store']);
-$router->add('GET',  '/photo/{id}',          ['PhotoController', 'show']);
-$router->add('GET',  '/photo/{id}/delete',   ['PhotoController', 'delete']);
+$router->add('GET',  '/photos', ['PhotoController', 'index']);
+$router->add('GET',  '/photo/create', ['PhotoController', 'create']);
+$router->add('POST', '/photo/store',  ['PhotoController', 'store']);
+$router->add('GET',  '/photo/{id}', ['PhotoController', 'show']);
+$router->add('GET',  '/photo/{id}/delete', ['PhotoController', 'delete']);
 
-//Comments
+//Profile
+$router->add('GET', '/profile', ['ProfileController', 'myProfile']);
+$router->add('GET', '/profile/{id}', ['ProfileController', 'show']);
+
+// Comments
+
 $router->add('POST', '/photo/{id}/comment', ['CommentController', 'store']);
 
 return $router;
