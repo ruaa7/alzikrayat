@@ -26,7 +26,7 @@
             <ul class="navbar-nav ms-auto align-items-lg-center">
                 <?php if (!empty($_SESSION['user_id'])): ?>
                     <li class="nav-item">
-                        <span class="navbar-text text-light me-3">Hi <?= htmlspecialchars($_SESSION['first_name'], ENT_QUOTES, 'UTF-8') ?></span>
+                        <a href="<?= url('/profile') ?>" class="navbar-text text-light me-3 text-decoration-none">Hi <?= htmlspecialchars($_SESSION['first_name'], ENT_QUOTES, 'UTF-8') ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-outline-light btn-sm" href="<?= url('/logout') ?>">Logout</a>
