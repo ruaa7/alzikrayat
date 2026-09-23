@@ -4,7 +4,7 @@
     <p class="lead mb-4" style="color: var(--primary-dark);"> With Alzikrayat you can share, 
     upload, browse and comment on the special moments that matter to you and your friends.</p>
    <?php if (empty($_SESSION['user_id'])): ?>
-    <a href="<?= url('/register') ?>">Join Now</a>
+    <a href="<?= url('/register') ?>" class="fs-5">Join Now</a>
    <?php else: ?>
     <a href="<?= url('/photo/create') ?>">Upload a Photo</a>
    <?php endif; ?>
