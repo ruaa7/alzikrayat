@@ -45,8 +45,7 @@
 
 <div class="card shadow-sm p-4" id="about">
     <h3>About Us</h3>
-      <p class="mb-2">We believe that memories are an important part of our lives.</p>
-      <p class="mb-2">Every photo captures a special moment, a feeling, or a story worth remembering.</p>
+      <p class="mb-2">We believe that memories are an important part of our lives. Every photo captures a special moment, a feeling, or a story worth remembering.</p>
       <p class="mb-2">Alzikrayat is a simple, fast place to upload, browse, comment and share their favorite photos and memories with your friends.</p>
       <p class="mb-0">Our goal is to help users keep their special moments organized and easily revisit them whenever they want.</p>    
 </div>
