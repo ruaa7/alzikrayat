@@ -5,7 +5,7 @@ CREATE DATABASE IF NOT EXISTS alzikrayat
 
 USE alzikrayat;
 
---Table:users
+-- Table:users
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS users (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
---Table:photos
+-- Table:photos
 
 CREATE TABLE IF NOT EXISTS photos (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS photos (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
---Table:comments
+-- Table:comments
 
 CREATE TABLE IF NOT EXISTS comments (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS comments (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
---Table: photo_tags   
---join table linking a photo to the users tagged in it by unique key
+-- Table: photo_tags   
+-- join table linking a photo to the users tagged in it by unique key
 
 CREATE TABLE IF NOT EXISTS photo_tags (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -81,7 +81,4 @@ CREATE TABLE IF NOT EXISTS photo_tags (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- Optional seed data (safe to remove)
--- ----------------------------------------------------------------------------
--- INSERT INTO users (first_name, last_name, email, password, occupation)
--- VALUES ('Test', 'User', 'test@example.com', '$2y$10$examplehash', 'Student');
+

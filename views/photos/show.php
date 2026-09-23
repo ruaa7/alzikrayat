@@ -1,8 +1,12 @@
+
 <div class="row g-4">
     <div class="col-lg-7">
-        <img src="<?= url('/images/uploads/' . htmlspecialchars($photo['file_name'], ENT_QUOTES, 'UTF-8')) ?>"
-             class="img-fluid rounded shadow-sm w-100" style="max-height:600px;object-fit:contain;background:#111;"
-             alt="<?= htmlspecialchars($photo['title'], ENT_QUOTES, 'UTF-8') ?>">
+        <div class="d-flex align-items-start gap-2">
+            <a href="<?= url('/photos') ?>" class="btn btn-primary btn-sm flex-shrink-0" title="Back to Gallery">&larr;</a>
+            <img src="<?= url('/images/uploads/' . htmlspecialchars($photo['file_name'], ENT_QUOTES, 'UTF-8')) ?>"
+                 class="img-fluid rounded shadow-sm w-100" style="max-height:600px;object-fit:contain;background:#111;"
+                 alt="<?= htmlspecialchars($photo['title'], ENT_QUOTES, 'UTF-8') ?>">
+        </div>
     </div>
 
     <div class="col-lg-5">

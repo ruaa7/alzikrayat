@@ -1,13 +1,13 @@
 <div class="p-5 mb-4 rounded-4 text-center" >
     <h1 class="display-5 fw-bold" style="color: var(--primary);">Welcome to Alzikrayat</h1>
-    <p class="lead mb-4" style="color: var(--primary-dark);">"Alzikrayat" means <em>memories,</em>Memories make life special — With Alzikrayat you can share, upload,
-        browse and comment on the special moments that matter to you and your friends.</p>
-    <a href="<?= url('/photos') ?>" class="btn btn-primary btn-lg me-2">Browse Gallery</a>
-    <?php if (empty($_SESSION['user_id'])): ?>
-        <a href="<?= url('/register') ?>" class="btn btn-primary btn-lg">Join Now</a>
-    <?php else: ?>
-        <a href="<?= url('/photo/create') ?>" class="btn btn-primary btn-lg">Upload a Photo</a>
-    <?php endif; ?>
+    <p class="lead mb-2" style="color: var(--primary-dark);">"Alzikrayat" means <em>memories</em>.Memories make life special</p>
+    <p class="lead mb-4" style="color: var(--primary-dark);"> With Alzikrayat you can share, 
+    upload, browse and comment on the special moments that matter to you and your friends.</p>
+   <?php if (empty($_SESSION['user_id'])): ?>
+    <a href="<?= url('/register') ?>">Join Now</a>
+   <?php else: ?>
+    <a href="<?= url('/photo/create') ?>">Upload a Photo</a>
+   <?php endif; ?>
 </div>
 
 <div class="row text-center mb-5 g-3">
@@ -26,7 +26,10 @@
 </div>
 
 <?php if (!empty($recentPhotos)): ?>
-<h3 class="mb-3">Recent Memories</h3>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">Recent Memories</h3>
+    <a href="<?= url('/photos') ?>" class="btn btn-primary btn-lg">Browse Gallery</a>
+</div>
 <div class="row g-3 mb-5">
     <?php foreach ($recentPhotos as $p): ?>
         <div class="col-6 col-md-4 col-lg-2">
@@ -42,8 +45,8 @@
 
 <div class="card shadow-sm p-4" id="about">
     <h3>About Us</h3>
-    <p class="mb-0">we believe that memories are an important part of our lives. Every photo captures 
-        a special moment,a feeling, or a story worth remembering. Alzikrayat is a simple, fast place to upload,
-        browse, comment and share their favorite photos and memories with your friends. Our goal is to help users 
-        keep their special moments organized and easily revisit them whenever they want.</p>
+      <p class="mb-2">We believe that memories are an important part of our lives.</p>
+      <p class="mb-2">Every photo captures a special moment, a feeling, or a story worth remembering.</p>
+      <p class="mb-2">Alzikrayat is a simple, fast place to upload, browse, comment and share their favorite photos and memories with your friends.</p>
+      <p class="mb-0">Our goal is to help users keep their special moments organized and easily revisit them whenever they want.</p>    
 </div>
