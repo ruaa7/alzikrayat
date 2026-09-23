@@ -1,5 +1,4 @@
-<div class="row justify-content-center mb-4">
-    <div class="col-lg-6">
+<div class="mb-4">
         <div class="card shadow-sm p-4 text-center">
             <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle"
                  style="width:90px;height:90px;background:var(--accent);color:var(--primary);font-size:2rem;font-weight:bold;">
