@@ -1,73 +1,47 @@
-
-<div class="row g-4">
-    <div class="col-lg-7">
-        <div class="d-flex align-items-start gap-2">
-            <a href="<?= url('/photos') ?>" class="btn btn-primary btn-sm flex-shrink-0" title="Back to Gallery">&larr;</a>
-            <img src="<?= url('/images/uploads/' . htmlspecialchars($photo['file_name'], ENT_QUOTES, 'UTF-8')) ?>"
-                 class="img-fluid rounded shadow-sm w-100" style="max-height:600px;object-fit:contain;background:#111;"
-                 alt="<?= htmlspecialchars($photo['title'], ENT_QUOTES, 'UTF-8') ?>">
-        </div>
-    </div>
-
-    <div class="col-lg-5">
-        <div class="d-flex justify-content-between align-items-start">
-            <h2><?= htmlspecialchars($photo['title'], ENT_QUOTES, 'UTF-8') ?></h2>
-            <?php if (!empty($_SESSION['user_id']) && (int) $_SESSION['user_id'] === (int) $photo['user_id']): ?>
-                <a href="<?= url('/photo/' . (int) $photo['id'] . '/delete') ?>" class="btn btn-outline-danger btn-sm"
-                   onclick="return confirm('Delete this photo permanently?');">Delete</a>
-            <?php endif; ?>
-        </div>
-        <p class="text-muted mb-1">by <?= htmlspecialchars($photo['first_name'] . ' ' . $photo['last_name'], ENT_QUOTES, 'UTF-8') ?>
-            &middot; <?= htmlspecialchars($photo['date_time'], ENT_QUOTES, 'UTF-8') ?></p>
-        <?php if (!empty($photo['description'])): ?>
-            <p><?= nl2br(htmlspecialchars($photo['description'], ENT_QUOTES, 'UTF-8')) ?></p>
-        <?php endif; ?>
-
-        <?php if (!empty($tags)): ?>
-            <p class="mb-2">
-                <span class="text-muted small">Tagged:</span>
-                <?php foreach ($tags as $t): ?>
-                    <span class="badge bg-secondary-subtle text-dark border me-1">
-                        <?= htmlspecialchars($t['first_name'] . ' ' . $t['last_name'], ENT_QUOTES, 'UTF-8') ?>
-                    </span>
-                <?php endforeach; ?>
-            </p>
-        <?php endif; ?>
-
-        <hr>
-
-        <h5>Comments (<?= count($comments) ?>)</h5>
-        <div class="mb-3" style="max-height:320px;overflow-y:auto;" id="commentsList">
-            <?php if (empty($comments)): ?>
-                <p class="text-muted small">No comments yet. Be the first to comment!</p>
-            <?php else: ?>
-                <?php foreach ($comments as $c): ?>
-                    <div class="border-bottom py-2">
-                        <strong><?= htmlspecialchars($c['first_name'] . ' ' . $c['last_name'], ENT_QUOTES, 'UTF-8') ?></strong>
-                        <span class="text-muted small">&middot; <?= htmlspecialchars($c['date_time'], ENT_QUOTES, 'UTF-8') ?></span>
-                        <p class="mb-0"><?= nl2br(htmlspecialchars($c['comment'], ENT_QUOTES, 'UTF-8')) ?></p>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-
-        <?php if (!empty($_SESSION['flash_errors'])): ?>
-            <div class="alert alert-danger small">
-                <?php foreach ($_SESSION['flash_errors'] as $err): ?>
-                    <div><?= htmlspecialchars($err, ENT_QUOTES, 'UTF-8') ?></div>
-                <?php endforeach; unset($_SESSION['flash_errors']); ?>
+<div class="row justify-content-center mb-4">
+    <div class="col-lg-6">
+        <div class="card shadow-sm p-4 text-center">
+            <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle"
+                 style="width:90px;height:90px;background:var(--accent);color:var(--primary);font-size:2rem;font-weight:bold;">
+                <?= strtoupper(substr($profileUser['first_name'], 0, 1)) ?>
             </div>
-        <?php endif; ?>
+            <h3 class="mb-1"><?= htmlspecialchars($profileUser['first_name'] . ' ' . $profileUser['last_name'], ENT_QUOTES, 'UTF-8') ?></h3>
 
-        <?php if (!empty($_SESSION['user_id'])): ?>
-            <form action="<?= url('/photo/' . (int) $photo['id'] . '/comment') ?>" method="POST" id="commentForm" novalidate>
-                <div class="input-group">
-                    <input type="text" name="comment" class="form-control" placeholder="Add a comment..." required minlength="1">
-                    <button type="submit" class="btn btn-primary">Post</button>
-                </div>
-            </form>
-        <?php else: ?>
-            <p class="small"><a href="<?= url('/login') ?>">Log in</a> to add a comment.</p>
-        <?php endif; ?>
+            <?php if (!empty($profileUser['occupation'])): ?>
+                <p class="text-muted mb-2"><?= htmlspecialchars($profileUser['occupation'], ENT_QUOTES, 'UTF-8') ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($profileUser['location'])): ?>
+                <p class="small text-muted mb-3">📍 <?= htmlspecialchars($profileUser['location'], ENT_QUOTES, 'UTF-8') ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($profileUser['description'])): ?>
+                <hr>
+                <p class="mb-0 text-start"><?= nl2br(htmlspecialchars($profileUser['description'], ENT_QUOTES, 'UTF-8')) ?></p>
+            <?php endif; ?>
+
+            <hr>
+            <p class="small text-muted mb-0"><?= count($photos) ?> photo<?= count($photos) === 1 ? '' : 's' ?> shared</p>
+        </div>
     </div>
+</div>
+
+<div>
+    <h4 class="mb-3"><?= htmlspecialchars($profileUser['first_name'], ENT_QUOTES, 'UTF-8') ?>'s Photos</h4>
+
+    <?php if (empty($photos)): ?>
+        <p class="text-muted">No photos shared yet.</p>
+    <?php else: ?>
+        <div class="row g-3">
+            <?php foreach ($photos as $p): ?>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="<?= url('/photo/' . (int) $p['id']) ?>">
+                        <img src="<?= url('/images/uploads/' . htmlspecialchars($p['file_name'], ENT_QUOTES, 'UTF-8')) ?>"
+                             class="img-fluid rounded shadow-sm" style="aspect-ratio:1/1;object-fit:cover;width:100%;"
+                             alt="<?= htmlspecialchars($p['title'], ENT_QUOTES, 'UTF-8') ?>">
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
 </div>
