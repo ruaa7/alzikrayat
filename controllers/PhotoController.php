@@ -37,18 +37,26 @@ class PhotoController extends Controller
      */
     public function index(): void
     {
-        $photos = $this->photoModel->findAll();
+       $query = trim($_GET['q'] ?? '');
+
+       if ($query !== '') {
+           $photos = $this->photoModel->searchByTitle($query);
+       } else {
+           $photos = $this->photoModel->findAll();
+       }
+
         $style  = $_GET['style'] ?? 'grid3';
         $allowedStyles = ['grid3', 'grid4', 'list', 'slider'];
         if (!in_array($style, $allowedStyles, true)) {
             $style = 'grid3';
-        }
+       }
 
         $this->render('photos/index', [
-            'photos' => $photos,
-            'style'  => $style,
-        ]);
-    }
+           'photos' => $photos,
+           'style'  => $style,
+           'query'  => $query,
+      ]);
+   }
 
     /**
      * GET /photo/{id} - detailed view with metadata and comments.
