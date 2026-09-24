@@ -31,12 +31,10 @@
                                style="width:28px;height:28px;background:var(--accent);color:var(--primary);font-weight:bold;font-size:0.85rem;">
                             <?= strtoupper(substr($_SESSION['first_name'], 0, 1)) ?>
                            </span>
-                           Hi <?= htmlspecialchars($_SESSION['first_name'], ENT_QUOTES, 'UTF-8') ?>
+                           <?= htmlspecialchars($_SESSION['first_name'], ENT_QUOTES, 'UTF-8') ?> ,Hi
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-light btn-sm" href="<?= url('/logout') ?>">Logout</a>
-                    </li>
+                    
                 <?php else: ?>
                     <li class="nav-item">
                         <span class="navbar-text text-light me-3">Please Login</span>
