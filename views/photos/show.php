@@ -39,7 +39,7 @@
         <h5>Comments (<?= count($comments) ?>)</h5>
         <div class="mb-3" style="max-height:320px;overflow-y:auto;" id="commentsList">
             <?php if (empty($comments)): ?>
-                <p class="text-muted small">No comments yet. Be the first to comment!</p>
+                <p class="text-muted small">No comments yet.</p>
             <?php else: ?>
                 <?php foreach ($comments as $c): ?>
                     <div class="border-bottom py-2">
