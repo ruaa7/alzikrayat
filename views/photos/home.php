@@ -1,6 +1,6 @@
 <div class="p-5 mb-4 rounded-4 text-center">
     <h1 class="display-5 fw-bold" style="color: var(--primary);">Welcome to Alzikrayat</h1>
-    <p class="lead mb-2" style="color: var(--primary-dark);">"Alzikrayat" means <em>memories</em>, memories make life special</p>
+    <p class="lead mb-2" style="color: var(--primary-dark); font-weight: bold;">"Alzikrayat" means <em>memories</em>, memories make life special</p>
     <p class="lead mb-4" style="color: var(--primary-dark);"> With Alzikrayat you can share, 
     upload, browse and comment on the special moments that matter to you and your friends.</p>
    <?php if (empty($_SESSION['user_id'])): ?>
