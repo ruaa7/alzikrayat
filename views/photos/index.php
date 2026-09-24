@@ -1,12 +1,22 @@
+<h2 class="mb-0">Gallery</h2>
 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
-    <h2 class="mb-0">Gallery</h2>
+
+    <form action="<?= url('/photos') ?>" method="GET" class="d-flex" style="max-width:420px;">
+        <input type="text" name="q" class="form-control me-2"
+               placeholder="Search by title..."
+               value="<?= htmlspecialchars($query ?? '', ENT_QUOTES, 'UTF-8') ?>">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
     <div class="btn-group" role="group" aria-label="Display style">
-        <a href="?style=grid3" class="btn btn-sm btn-outline-secondary <?= $style === 'grid3' ? 'active' : '' ?>">3-Column</a>
-        <a href="?style=grid4" class="btn btn-sm btn-outline-secondary <?= $style === 'grid4' ? 'active' : '' ?>">4-Column</a>
-        <a href="?style=list"  class="btn btn-sm btn-outline-secondary <?= $style === 'list'  ? 'active' : '' ?>">List</a>
-        <a href="?style=slider" class="btn btn-sm btn-outline-secondary <?= $style === 'slider' ? 'active' : '' ?>">Slider</a>
+        <a href="?style=grid3" class="btn btn-sm btn-outline-primary <?= $style === 'grid3' ? 'active' : '' ?>">3-Column</a>
+        <a href="?style=grid4" class="btn btn-sm btn-outline-primary <?= $style === 'grid4' ? 'active' : '' ?>">4-Column</a>
+        <a href="?style=list" class="btn btn-sm btn-outline-primary <?= $style === 'list' ? 'active' : '' ?>">List</a>
+        <a href="?style=slider" class="btn btn-sm btn-outline-primary <?= $style === 'slider' ? 'active' : '' ?>">Slider</a>
     </div>
+
 </div>
+
 
 <?php if (empty($photos)): ?>
     <div class="alert alert-secondary">No photos have been uploaded yet. Be the first to
