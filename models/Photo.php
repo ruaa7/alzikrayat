@@ -65,7 +65,28 @@ class Photo extends Model
         $stmt = $this->db->query($sql);
         return $stmt->fetchAll();
     }
+    
+    /**
+     * Searches photos by title using a case-insensitive partial match,
+     * newest first. Uses a parameterized LIKE query -safe from SQL
+     * and reused by the gallery search box.
+     *
+     * @param string $query The search term typed by the user
+     * @return array
+     */
+    public function searchByTitle(string $query): array
+    {
+            $sql = "SELECT p.*, u.first_name, u.last_name
+               FROM photos p
+               JOIN users u ON u.id = p.user_id
+               WHERE p.title LIKE :query
+               ORDER BY p.date_time DESC";
 
+          $stmt = $this->db->prepare($sql);
+          $stmt->execute([':query' => '%' . $query . '%']);
+          return $stmt->fetchAll();
+   }
+ 
     /**
      * Finds a single photo (with uploader info) by id.
      *
