@@ -37,6 +37,13 @@ footer.navbar-custom {
     color: var(--primary);
     border-color: var(--primary);
 }
+
+.btn-outline-primary.active {
+    background-color: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+}
+
 .btn-outline-primary:hover {
     background-color: var(--primary);
     border-color: var(--primary);
