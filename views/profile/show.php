@@ -21,6 +21,9 @@
 
             <hr>
             <p class="small text-muted mb-0"><?= count($photos) ?> photo<?= count($photos) === 1 ? '' : 's' ?> shared</p>
+            <div class="text-end mt-3">
+              <a href="<?= url('/logout') ?>" class="btn btn-outline-danger btn-sm">Logout</a>
+            </div>
         </div>
     </div>
 </div>
