@@ -34,7 +34,9 @@
                            <?= htmlspecialchars($_SESSION['first_name'], ENT_QUOTES, 'UTF-8') ?> ,Hi
                         </a>
                     </li>
-                    
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light btn-sm" href="<?= url('/logout') ?>">Logout</a>
+                    </li>
                 <?php else: ?>
                     <li class="nav-item">
                         <span class="navbar-text text-light me-3">Please Login</span>
