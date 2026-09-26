@@ -3,12 +3,8 @@
 /**
  * Class Router
  *
- * Hand-written, regex-based routing engine. Routes are registered
- * with a placeholder syntax like "/photo/{id}" and are converted at
- * dispatch time into a regular expression that captures parameters
- * (such as numeric IDs) directly from the request URI. No framework
- * routing component is used, per the project's strict constraint.
- *
+ * Manual regex-based router. Matches "{param}" placeholders in routes
+ *against the request URI at dispatch time.
  * @package core
  */
 class Router
