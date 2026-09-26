@@ -54,10 +54,10 @@ class User extends Model
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
             ':first_name'  => $data['first_name'],
-            ':last_name'   => $data['last_name'],
-            ':email'       => $data['email'],
-            ':password'    => password_hash($data['password'], PASSWORD_BCRYPT),
-            ':location'    => $data['location'] ?? null,
+            ':last_name' => $data['last_name'],
+            ':email' => $data['email'],
+            ':password' => password_hash($data['password'], PASSWORD_BCRYPT),
+            ':location'  => $data['location'] ?? null,
             ':description' => $data['description'] ?? null,
             ':occupation'  => $data['occupation'] ?? null,
         ]);
